@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://microsoft.com/webservices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://microsoft.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/webservices/">
+      <s:element name="Solicitar_Piloto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Solicitar_PilotoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Solicitar_PilotoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Solicitar_Ubicacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ubicacon" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Solicitar_UbicacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Solicitar_UbicacionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Solicitar_PilotoSoapIn">
+    <wsdl:part name="parameters" element="tns:Solicitar_Piloto" />
+  </wsdl:message>
+  <wsdl:message name="Solicitar_PilotoSoapOut">
+    <wsdl:part name="parameters" element="tns:Solicitar_PilotoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Solicitar_UbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:Solicitar_Ubicacion" />
+  </wsdl:message>
+  <wsdl:message name="Solicitar_UbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:Solicitar_UbicacionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Servidor_clienteSoap">
+    <wsdl:operation name="Solicitar_Piloto">
+      <wsdl:input message="tns:Solicitar_PilotoSoapIn" />
+      <wsdl:output message="tns:Solicitar_PilotoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Solicitar_Ubicacion">
+      <wsdl:input message="tns:Solicitar_UbicacionSoapIn" />
+      <wsdl:output message="tns:Solicitar_UbicacionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Servidor_clienteSoap" type="tns:Servidor_clienteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Solicitar_Piloto">
+      <soap:operation soapAction="http://microsoft.com/webservices/Solicitar_Piloto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Solicitar_Ubicacion">
+      <soap:operation soapAction="http://microsoft.com/webservices/Solicitar_Ubicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Servidor_clienteSoap12" type="tns:Servidor_clienteSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Solicitar_Piloto">
+      <soap12:operation soapAction="http://microsoft.com/webservices/Solicitar_Piloto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Solicitar_Ubicacion">
+      <soap12:operation soapAction="http://microsoft.com/webservices/Solicitar_Ubicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Servidor_cliente">
+    <wsdl:port name="Servidor_clienteSoap" binding="tns:Servidor_clienteSoap">
+      <soap:address location="http://localhost:5001/Servidor_cliente.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Servidor_clienteSoap12" binding="tns:Servidor_clienteSoap12">
+      <soap12:address location="http://localhost:5001/Servidor_cliente.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

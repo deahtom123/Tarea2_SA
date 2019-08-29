@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://microsoft.com/webservices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://microsoft.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/webservices/">
+      <s:element name="SolicitarUbicacionPiloto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitarUbicacionPilotoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SolicitarUbicacionPilotoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SolicitarUbicacionPilotoSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitarUbicacionPiloto" />
+  </wsdl:message>
+  <wsdl:message name="SolicitarUbicacionPilotoSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitarUbicacionPilotoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Servicio_RastreadorSoap">
+    <wsdl:operation name="SolicitarUbicacionPiloto">
+      <wsdl:input message="tns:SolicitarUbicacionPilotoSoapIn" />
+      <wsdl:output message="tns:SolicitarUbicacionPilotoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Servicio_RastreadorSoap" type="tns:Servicio_RastreadorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SolicitarUbicacionPiloto">
+      <soap:operation soapAction="http://microsoft.com/webservices/SolicitarUbicacionPiloto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Servicio_RastreadorSoap12" type="tns:Servicio_RastreadorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SolicitarUbicacionPiloto">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SolicitarUbicacionPiloto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Servicio_Rastreador">
+    <wsdl:port name="Servicio_RastreadorSoap" binding="tns:Servicio_RastreadorSoap">
+      <soap:address location="http://localhost:5003/Servicio_Rastreador.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Servicio_RastreadorSoap12" binding="tns:Servicio_RastreadorSoap12">
+      <soap12:address location="http://localhost:5003/Servicio_Rastreador.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
