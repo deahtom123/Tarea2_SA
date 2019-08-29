@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:clienterastreador.localhost="http://clienterastreador.localhost" xmlns:webservices="http://microsoft.com/webservices/">
+  <process name="clienterastreador.localhost:Cliente_Rastreador">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="clienterastreador.localhost:Cliente_RastreadorService" port="Cliente_RastreadorPort"/>
+    </provide>
+    <invoke partnerLink="RastreadorPL">
+      <service name="webservices:Servicio_Rastreador" port="Servicio_RastreadorSoap"/>
+    </invoke>
+  </process>
+</deploy>
