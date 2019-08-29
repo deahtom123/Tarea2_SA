@@ -6,19 +6,14 @@ using System.Web.Services;
 
 namespace Servicio_Piloto
 {
-    /// <summary>
-    /// Descripción breve de Servicio_Piloto
-    /// </summary>
-    [WebService(Namespace = "http://tempuri.org/")]
+    [WebService(Namespace = "http://microsoft.com/webservices/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
-    // [System.Web.Script.Services.ScriptService]
     public class Servicio_Piloto : System.Web.Services.WebService
     {
-
+        //Esta ruta es cuando se quiera Solicitar un Piloto
         [WebMethod]
-        public string RealizarSolicitud()
+        public string RealizarSolicitud(String nombre)
         {
             return "Respuesta exitosa";
         }
